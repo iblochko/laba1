@@ -85,6 +85,23 @@ public class Complex {
         return this;
     }
 
+    public double mag() {
+        return Math.sqrt(re * re + im * im);
+    }
+
+    public double arg() {
+        return Math.atan2(im, re);
+    }
+
+    public Complex pow(double exponent) {
+        double magnitude = Math.pow(this.mag(), exponent);
+        double angle = this.arg() * exponent;
+        return new Complex(
+                magnitude * Math.cos(angle),
+                magnitude * Math.sin(angle)
+        );
+    }
+
     /**
      * Square of Complex object's length, we're using square of length to 
      * eliminate the computation of square root
